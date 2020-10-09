@@ -1,22 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StoryReel from "../StoryReel/StoryReel";
 import MessageSender from "../MessageSender/MessageSender";
 import Post from "../Post/Post";
+import axios from "../../axios";
+import Pusher from "pusher-js";
+
+const pusher = new Pusher("169efe3ca2722eee0502", {
+  cluster: "eu",
+});
 
 function Feed() {
+  const [profilePic, setProfilePic] = useState("");
+  const [postsData, setPostsData] = useState([]);
+
+  const syncFeed = () => {
+    axios.get("/retrieve/posts").then((res) => {
+      console.log(res.data);
+      setPostsData(res.data);
+    });
+  };
+
+  useEffect(() => {
+    const channel = pusher.subscribe("posts");
+    channel.bind("inserted", function (data) {
+      syncFeed();
+    });
+  }, []);
+
+  useEffect(() => {
+    syncFeed();
+  }, []);
+
   return (
     <div className="feed">
       <StoryReel />
       <MessageSender />
-      <Post
-        profilePic="https://avatars1.githubusercontent.com/u/66420306?s=460&u=e2dd24f9a8214eec47b6d23d5cc1018c18f29c8f&v=4"
-        message="this is a message"
-        timestamp="time"
-        imgName="imgName"
-        username="Tobias"
-      />
 
-      {/* {postsData.map((entry) => (
+      {postsData.map((entry) => (
         <Post
           profilePic={entry.avatar}
           message={entry.text}
@@ -24,7 +44,7 @@ function Feed() {
           imgName={entry.imgName}
           username={entry.user}
         />
-      ))} */}
+      ))}
     </div>
   );
 }

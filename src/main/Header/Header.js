@@ -10,8 +10,11 @@ import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined"
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
 import "./Header.css";
+import { useStateValue } from "../../StateProvider";
 
 function Header() {
+  const [{ user }, dispatch] = useStateValue();
+
   return (
     <div className="header">
       <div className="header__left">
@@ -43,8 +46,8 @@ function Header() {
 
       <div className="header__right">
         <div className="header__info">
-          <Avatar />
-          <h4>Tobias</h4>
+          <Avatar src={user.photoURL} />
+          <h4>{user.displayName}</h4>
         </div>
 
         <IconButton>
