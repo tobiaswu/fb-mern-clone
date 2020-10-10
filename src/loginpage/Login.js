@@ -35,6 +35,11 @@ function Login() {
       <Button type="submit" onClick={signIn}>
         Sign In
       </Button>
+
+      <div style={{ fontSize: "10px" }}>
+        <a href="https://wupperfeld.org/impressum">Impressum</a>
+        <a href="https://wupperfeld.org/datenschutz">Datenschutz</a>
+      </div>
     </div>
   );
 }
