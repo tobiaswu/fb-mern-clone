@@ -10,7 +10,6 @@ const pusher = new Pusher("169efe3ca2722eee0502", {
 });
 
 function Feed() {
-  const [profilePic, setProfilePic] = useState("");
   const [postsData, setPostsData] = useState([]);
 
   const syncFeed = () => {

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Avatar, Input } from "@material-ui/core";
-import { SettingsInputAntenna } from "@material-ui/icons";
 import "./MessageSender.css";
 import VideocamIcon from "@material-ui/icons/Videocam";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-import { useStateValue } from "../../StateProvider";
 import axios from "../../axios";
+import { selectUser } from "../redux/userSlice";
+import { useSelector } from "react-redux";
 
 function MessageSender() {
-  const [{ user }, dispatch] = useStateValue();
+  const user = useSelector(selectUser);
 
   const [input, setInput] = useState("");
   const [image, setImage] = useState(null);
@@ -85,6 +85,7 @@ function MessageSender() {
           />
           <Input
             type="file"
+            value={imageUrl}
             className="messageSender__fileSelector"
             onChange={handleChange}
           />

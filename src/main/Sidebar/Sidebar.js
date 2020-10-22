@@ -8,10 +8,11 @@ import ChatIcon from "@material-ui/icons/Chat";
 import StorefrontIcon from "@material-ui/icons/Storefront";
 import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 import ExpandMoreOutlined from "@material-ui/icons/ExpandMoreOutlined";
-import { useStateValue } from "../../StateProvider";
+import { selectUser } from "../redux/userSlice";
+import { useSelector } from "react-redux";
 
 function Sidebar() {
-  const [{ user }, dispatch] = useStateValue();
+  const user = useSelector(selectUser);
   return (
     <div>
       <SidebarRow src={user.photoURL} title={user.displayName} />

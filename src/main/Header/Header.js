@@ -10,10 +10,11 @@ import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined"
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
 import "./Header.css";
-import { useStateValue } from "../../StateProvider";
+import { selectUser } from "../redux/userSlice";
+import { useSelector } from "react-redux";
 
 function Header() {
-  const [{ user }, dispatch] = useStateValue();
+  const user = useSelector(selectUser);
 
   return (
     <div className="header">
