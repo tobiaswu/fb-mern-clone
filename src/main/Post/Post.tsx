@@ -7,7 +7,19 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import NearMeIcon from "@material-ui/icons/NearMe";
 import ExpandMoreOutlined from "@material-ui/icons/ExpandMore";
 
-function Post({ profilePic, imgName, username, timestamp, message }) {
+function Post({
+  profilePic,
+  imgName,
+  username,
+  timestamp,
+  message,
+}: {
+  profilePic: any;
+  imgName: any;
+  username: any;
+  timestamp: any;
+  message: any;
+}) {
   return (
     <div className="post">
       <div className="post__top">

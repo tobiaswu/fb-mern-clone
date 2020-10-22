@@ -10,7 +10,7 @@ const pusher = new Pusher("169efe3ca2722eee0502", {
 });
 
 function Feed() {
-  const [postsData, setPostsData] = useState([]);
+  const [postsData, setPostsData] = useState<any[]>([]);
 
   const syncFeed = () => {
     axios.get("/retrieve/posts").then((res) => {
@@ -21,7 +21,7 @@ function Feed() {
 
   useEffect(() => {
     const channel = pusher.subscribe("posts");
-    channel.bind("inserted", function (data) {
+    channel.bind("inserted", function (data: string) {
       syncFeed();
     });
   }, []);

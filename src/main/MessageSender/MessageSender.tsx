@@ -12,28 +12,28 @@ function MessageSender() {
   const user = useSelector(selectUser);
 
   const [input, setInput] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (image) {
       const imgForm = new FormData();
-      imgForm.append("file", image, image.name);
+      imgForm.append("file", image, imageUrl);
 
       axios
         .post("/upload/image", imgForm, {
           headers: {
             accept: "application/json",
             "Accept-Language": "en-US,en;q=0.8",
-            "Content-Type": `multipart/form-data; boundary=${imgForm._boundary}`,
+            "Content-Type": `multipart/form-data; boundary=${imgForm.set}`,
           },
         })
         .then((res) => {
@@ -62,10 +62,10 @@ function MessageSender() {
 
     setImageUrl("");
     setInput("");
-    setImage(null);
+    setImage("");
   };
 
-  const savePost = async (postData) => {
+  const savePost = async (postData: any) => {
     await axios.post("/upload/post", postData).then((resp) => {
       console.log(resp);
     });

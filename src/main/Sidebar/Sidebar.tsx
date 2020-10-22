@@ -15,19 +15,20 @@ function Sidebar() {
   const user = useSelector(selectUser);
   return (
     <div>
-      <SidebarRow src={user.photoURL} title={user.displayName} />
+      <SidebarRow src={user.photoURL} Icon="" title={user.displayName} />
 
       <SidebarRow
+        src=""
         Icon={LocalHospitalIcon}
         title="COVIDIOT Informationszentrum"
       />
-      <SidebarRow Icon={EmojiFlagsIcon} title="Seiten" />
-      <SidebarRow Icon={PeopleIcon} title="Freunde" />
-      <SidebarRow Icon={ChatIcon} title="Messenger" />
-      <SidebarRow Icon={StorefrontIcon} title="Marketplace" />
+      <SidebarRow src="" Icon={EmojiFlagsIcon} title="Seiten" />
+      <SidebarRow src="" Icon={PeopleIcon} title="Freunde" />
+      <SidebarRow src="" Icon={ChatIcon} title="Messenger" />
+      <SidebarRow src="" Icon={StorefrontIcon} title="Marketplace" />
 
-      <SidebarRow Icon={VideoLibraryIcon} title="Videos" />
-      <SidebarRow Icon={ExpandMoreOutlined} title="Mehr anzeigen" />
+      <SidebarRow src="" Icon={VideoLibraryIcon} title="Videos" />
+      <SidebarRow src="" Icon={ExpandMoreOutlined} title="Mehr anzeigen" />
     </div>
   );
 }

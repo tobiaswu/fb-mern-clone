@@ -32,16 +32,16 @@ function Header() {
 
       <div className="header__center">
         <div className="header__option header__option--active">
-          <HomeIcon fontsize="large" />
+          <HomeIcon />
         </div>
         <div className="header__option">
-          <FlagIcon fontsize="large" />
+          <FlagIcon />
         </div>
         <div className="header__option">
-          <SubscriptionsOutlinedIcon fontsize="large" />
+          <SubscriptionsOutlinedIcon />
         </div>
         <div className="header__option">
-          <SupervisedUserCircleIcon fontsize="large" />
+          <SupervisedUserCircleIcon />
         </div>
       </div>
 
